@@ -4,6 +4,7 @@
 #include "Vehicule.hpp"
 #include "Voiture.hpp"
 #include "Bateau.hpp"
+#include "VoitureAmphibie.hpp"
 
 // Véhicule
 void test_vehicule(void);
@@ -29,7 +30,11 @@ void test_bateauArreter(void);
 
 int main()
 {
-
+    VoitureAmphibie v1 = VoitureAmphibie(200, 70, 3);
+    v1.monter(1);
+    v1.demarrer();
+    v1.afficherCaracteristiques();
+    v1.arreter();
     // test_vehicule();
     // test_voiture();
     // test_bateau();

@@ -1,7 +1,10 @@
+#ifndef BATEAU_HPP
+#define BATEAU_HPP
+
 #include "Vehicule.hpp"
 
 // Classe voiture qui herite de la classe vehicule 
-class Bateau : public Vehicule
+class Bateau : public virtual Vehicule
 {
    
     public:
@@ -10,3 +13,5 @@ class Bateau : public Vehicule
         void demarrer() override;
         void arreter() override;
 };
+
+#endif
