@@ -2,7 +2,10 @@
 #include <assert.h>
 
 #include "Vehicule.hpp"
+#include "Voiture.hpp"
+#include "Bateau.hpp"
 
+// Véhicule
 void test_vehicule(void);
 void test_vehiculeConstructeur(void);
 void test_vehiculeDemarrer(void);
@@ -14,10 +17,22 @@ void test_vehiculeDescendre(void);
 void test_vehiculeMettrePanne(void);
 void test_vehiculeGetEtat(void);
 
+// Voiture
+void test_voiture(void);
+void test_voitureDemarrer(void);
+void test_voitureArreter(void);
+
+// Bateau
+void test_bateau(void);
+void test_bateauDemarrer(void);
+void test_bateauArreter(void);
+
 int main()
 {
 
-    test_vehicule();
+    // test_vehicule();
+    // test_voiture();
+    // test_bateau();
 
     return 0;
 }
@@ -36,6 +51,21 @@ void test_vehicule(void)
     test_vehiculeGetEtat();
 
     std::cout << "Class Vehicule: OK" << std::endl;
+}
+
+void test_voiture(void)
+{
+    test_voitureDemarrer();
+    test_voitureArreter();
+
+    std::cout << "Class Voiture: OK" << std::endl;
+}
+
+void test_bateau(void)
+{
+    test_bateauDemarrer();
+    test_bateauArreter();
+    std::cout << "Class Bateau: OK" << std::endl;
 }
 
 void test_vehiculeConstructeur(void)
@@ -484,4 +514,165 @@ void test_vehiculeGetEtat(void)
     Vehicule v4 = Vehicule();
     v4.mettreEnPanne(0.6);
     assert(v4.getEtat() == "PANNE_SEVERE");
+}
+
+void test_voitureDemarrer(void)
+{
+    // Test cas fonctionnel
+    Voiture v1 = Voiture(0, 1, 1);
+    v1.demarrer();
+    assert(v1.getEtat() == "MARCHE");
+
+    // Test demarrage sans occupant
+    Voiture v2 = Voiture(0, 1, 0);
+    try
+    {
+        v2.demarrer();
+    }
+    catch (std::runtime_error const &ex)
+    {
+        std::cout << "Catched error: " << ex.what() << std::endl;
+    }
+    assert(v2.getEtat() == "ARRET");
+
+    // Test demarrage avec voiture en panne légère
+    Voiture v3 = Voiture(0, 1, 1);
+    v3.mettreEnPanne(0.4);
+    try
+    {
+        v3.demarrer();
+    }
+    catch (std::runtime_error const &ex)
+    {
+        std::cout << "Catched error: " << ex.what() << std::endl;
+    }
+    assert(v3.getEtat() == "PANNE_LEGERE");
+
+    // Test demarrage avec voiture en panne sévère
+    Voiture v4 = Voiture(0, 1, 1);
+    v4.mettreEnPanne(0.6);
+    try
+    {
+        v4.demarrer();
+    }
+    catch (std::runtime_error const &ex)
+    {
+        std::cout << "Catched error: " << ex.what() << std::endl;
+    }
+    assert(v4.getEtat() == "PANNE_SEVERE");
+
+    // Test demarrage avec voiture démarrer
+    Voiture v5 = Voiture(0, 1, 1);
+    v5.demarrer();
+    try
+    {
+        v5.demarrer();
+    }
+    catch (std::runtime_error const &ex)
+    {
+        std::cout << "Catched error: " << ex.what() << std::endl;
+    }
+    assert(v5.getEtat() == "MARCHE");
+}
+
+void test_voitureArreter(void)
+{
+    // Test d'arrêt un véhicule déjà arrêter
+    Voiture v1 = Voiture(0, 1, 1);
+    try
+    {
+        v1.arreter();
+    }
+    catch (std::runtime_error const &ex)
+    {
+        std::cout << "Catched error: " << ex.what() << std::endl;
+    }
+    assert(v1.getEtat() == "ARRET");
+
+    Voiture v2 = Voiture(0, 1, 1);
+    v2.demarrer();
+    assert(v2.getEtat() == "MARCHE");
+
+    v2.arreter();
+    assert(v2.getEtat() == "ARRET");
+}
+
+void test_bateauDemarrer(void)
+{
+    // Test cas fonctionnel
+    Bateau b1 = Bateau(0, 1, 1);
+    b1.demarrer();
+    assert(b1.getEtat() == "MARCHE");
+
+    // Test demarrage sans occupant
+    Bateau b2 = Bateau(0, 1, 0);
+    try
+    {
+        b2.demarrer();
+    }
+    catch (std::runtime_error const &ex)
+    {
+        std::cout << "Catched error: " << ex.what() << std::endl;
+    }
+    assert(b2.getEtat() == "ARRET");
+
+    // Test demarrage avec voiture en panne légère
+    Bateau b3 = Bateau(0, 1, 1);
+    b3.mettreEnPanne(0.4);
+    try
+    {
+        b3.demarrer();
+    }
+    catch (std::runtime_error const &ex)
+    {
+        std::cout << "Catched error: " << ex.what() << std::endl;
+    }
+    assert(b3.getEtat() == "PANNE_LEGERE");
+
+    // Test demarrage avec voiture en panne sévère
+    Bateau b4 = Bateau(0, 1, 1);
+    b4.mettreEnPanne(0.6);
+    try
+    {
+        b4.demarrer();
+    }
+    catch (std::runtime_error const &ex)
+    {
+        std::cout << "Catched error: " << ex.what() << std::endl;
+    }
+    assert(b4.getEtat() == "PANNE_SEVERE");
+
+    // Test demarrage avec voiture démarrer
+    Bateau b5 = Bateau(0, 1, 1);
+    b5.demarrer();
+    try
+    {
+        b5.demarrer();
+    }
+    catch (std::runtime_error const &ex)
+    {
+        std::cout << "Catched error: " << ex.what() << std::endl;
+    }
+    assert(b5.getEtat() == "MARCHE");
+}
+void test_bateauArreter(void)
+{
+    // Test d'arrêt un véhicule déjà arrêter
+    Bateau b1 = Bateau(0, 1, 1);
+    try
+    {
+        b1.arreter();
+    }
+    catch (std::runtime_error const &ex)
+    {
+        std::cout << "Catched error: " << ex.what() << std::endl;
+    }
+    assert(b1.getEtat() == "ARRET");
+
+    Bateau b2 = Bateau(0, 1, 1);
+    b2.demarrer();
+    assert(b2.getEtat() == "MARCHE");
+
+    b2.arreter();
+    assert(b2.getEtat() == "ARRET");
 }
