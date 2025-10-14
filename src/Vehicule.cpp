@@ -58,7 +58,7 @@ void Vehicule::demarrer()
 void Vehicule::arreter()
 {
 
-    // Quelqu'un dans la caisse
+    // Quelqu'un dans la voiture
     if (this->occupants_ <= 0)
     {
         throw runtime_error("Le véhicule doit avoir au moins un occupant.");
@@ -112,7 +112,7 @@ void Vehicule::accelerer(int increment)
     // La vitesse ne depasse pas la limite max
     if ((this->vitesse_ + increment) > this->vitesseMax_)
     {
-        throw runtime_error("Le véhicule depasse la vitesse max de " + this->vitesseMax_);
+        throw runtime_error("Le véhicule depasse la vitesse max de " + to_string(this->vitesseMax_));
     }
 
     // Incrementation de la vitesse
@@ -133,8 +133,12 @@ void Vehicule::monter(int nbOcc)
         throw runtime_error("Il n'y a plus de place dans le véhicule ");
     }
 
-    // Le vehicule est à l'arret
-    if (this->etat_ != this->ARRET)
+    if (this->etat_ == this->MARCHE && this->vitesse_ > 0)
+    {
+        throw runtime_error("Le véhicule est en marche et roule");
+    }
+    // Le vehicule est en panne
+    if (this->etat_ == this->PANNE_LEGERE || this->etat_ == this->PANNE_SEVERE)
     {
         throw runtime_error("Le véhicule est dans un mauvais état: " + this->getEtat());
     }
@@ -150,13 +154,13 @@ void Vehicule::descendre(int nbOcc)
     }
 
     // Il y a trop d'occupant dans la voiture
-    if ((this->occupants_ - nbOcc) < this->nbPlaces_)
+    if ((this->occupants_ - nbOcc) < 0)
     {
-        throw runtime_error("Il n'y a trop de monde dans le véhicule ");
+        throw runtime_error("Il n'y a pas assé de monde dans le véhicule ");
     }
 
     // Le vehicule est à l'arret
-    if (this->etat_ == this->MARCHE)
+    if (this->etat_ == this->MARCHE && this->vitesse_ > 0)
     {
         throw runtime_error("Le véhicule est dans un mauvais état: " + this->getEtat());
     }
