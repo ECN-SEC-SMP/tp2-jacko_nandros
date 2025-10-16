@@ -228,3 +228,13 @@ Vehicule::~Vehicule()
 {
     // destructeur
 }
+
+ostream &operator<<(ostream &s, Vehicule const &v)
+{
+    s << "Etat: " << v.etat_ << "\n";
+    s << "Nombre de place: " << v.nbPlaces_ << "\n";
+    s << "Nombre d'occupants: " << v.occupants_ << "\n";
+    s << "Vitesse maximale: " << v.vitesseMax_ << "\n";
+    s << "Vitesse courrante: " << v.vitesse_ << "\n";
+    return s;
+}

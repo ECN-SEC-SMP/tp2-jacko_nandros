@@ -28,17 +28,19 @@ void test_bateau(void);
 void test_bateauDemarrer(void);
 void test_bateauArreter(void);
 
+// Amphibie
+void test_voitureAmphibie(void);
+
 int main()
 {
-    VoitureAmphibie v1 = VoitureAmphibie(200, 70, 3);
-    v1.monter(1);
-    v1.demarrer();
-    v1.afficherCaracteristiques();
-    v1.arreter();
-    // test_vehicule();
-    // test_voiture();
-    // test_bateau();
+    std::cout << "*** DEBUT DES TESTS ***" << std::endl;
 
+    test_vehicule();
+    test_voiture();
+    test_bateau();
+    test_voitureAmphibie();
+
+    std::cout << "*** FIN DES TESTS ***" << std::endl;
     return 0;
 }
 
@@ -680,4 +682,13 @@ void test_bateauArreter(void)
 
     b2.arreter();
     assert(b2.getEtat() == "ARRET");
+}
+
+void test_voitureAmphibie(void)
+{
+    VoitureAmphibie v1 = VoitureAmphibie(200, 70, 3);
+    v1.monter(1);
+    v1.demarrer();
+    v1.afficherCaracteristiques();
+    v1.arreter();
 }

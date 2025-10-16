@@ -26,8 +26,8 @@ void VoitureAmphibie::arreter()
 
 void VoitureAmphibie::afficherCaracteristiques()
 {
-    cout << "Mode voiture : " << vitesseMaxVoiture_ << " km/h" << endl;
-    cout << "Mode bateau  : " << vitesseMaxBateau_ << " noeuds" << endl;
-    cout << "Places       : " << nbPlaces_ << endl;
-    cout << "Occupants    : " << occupants_ << endl;
+    cout << "Mode voiture: " << vitesseMaxVoiture_ << " km/h" << endl;
+    cout << "Mode bateau: " << vitesseMaxBateau_ << " noeuds" << endl;
+    cout << "Places: " << nbPlaces_ << endl;
+    cout << "Occupants: " << occupants_ << endl;
 }

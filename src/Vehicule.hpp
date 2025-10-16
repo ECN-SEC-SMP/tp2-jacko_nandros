@@ -30,7 +30,7 @@ public:
         PANNE_LEGERE,
         PANNE_SEVERE
     };
-
+    
     Vehicule(int vitesseMax = 0, int nbPlaces = 1, int occupants = 0);
 
     virtual void demarrer();
