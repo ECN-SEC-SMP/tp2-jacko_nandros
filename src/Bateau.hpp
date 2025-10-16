@@ -16,16 +16,19 @@ public:
      * @param occupants Nombre d'occupants dans le bateau
      */
     Bateau(int vitesseMax = 0, int nbPlaces = 1, int occupants = 0);
+
     /**
      * @brief Destroy the Bateau object
      *
      */
     ~Bateau();
+
     /**
      * @brief Démarre le bateau
      *
      */
     void demarrer() override;
+    
     /**
      * @brief Arrete le bateau
      *
