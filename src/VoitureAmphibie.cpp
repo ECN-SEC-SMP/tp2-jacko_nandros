@@ -31,3 +31,7 @@ void VoitureAmphibie::afficherCaracteristiques()
     cout << "Places: " << nbPlaces_ << endl;
     cout << "Occupants: " << occupants_ << endl;
 }
+
+VoitureAmphibie::~VoitureAmphibie()
+{
+}

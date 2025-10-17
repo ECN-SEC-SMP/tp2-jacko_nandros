@@ -60,25 +60,29 @@ public:
 
     /**
      * @brief Fait accélerer le Vehicule object
-     *
+     * @param increment incrémentation de la vitesse
+     * 
      */
     virtual void accelerer(int increment);
 
     /**
      * @brief Fais monter le Vehicule object
-     *
+     * @param nbOcc nombre d'occupants à faire monter
+     * 
      */
     virtual void monter(int nbOcc);
 
     /**
      * @brief Fais descendre le Vehicule object
+     * @param nbOcc nombre d'occupants à faire descendre
      *
      */
     virtual void descendre(int nbOcc);
 
     /**
      * @brief Met en panne le Vehicule object
-     *
+     * @param random valeur aléatoire pour déterminer le type de panne
+     * 
      */
     virtual void mettreEnPanne(double random);
 
